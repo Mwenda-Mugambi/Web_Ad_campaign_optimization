@@ -7,7 +7,7 @@ We will utilize data that simulates the web traffic behaviours of a websites suc
 To do such a project you can use scraping techniques to extract real-time time series data from Google Analytics, ensuring accuracy and relevance for forecasting models within the context of total and new users per day.
 
 # Dataset Overview: 
-The primary dataset consists of time series data of total users and new users per day, sourced from Google Analytics. This dataset captures daily fluctuations in user engagement, essential for precise forecasting and ad optimization. 
+This dataset captures daily fluctuations in user engagement, essential for precise forecasting and ad optimization. 
 
 # Data Features
 The dataset includes variables such as **total users**, **new users**, **time stamps**, and **travel-related indicators**. 
