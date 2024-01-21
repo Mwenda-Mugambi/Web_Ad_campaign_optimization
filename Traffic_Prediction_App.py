@@ -19,6 +19,14 @@ def main():
 
     st.markdown("Our project aims to revolutionize ad placement strategies through advanced Time Series Forecasting for Jambojet to optimize its advertising spaces to maximize revenue.", unsafe_allow_html=True)
 
+    # Collapsible Instructions
+    with st.expander("How to use this app"):
+        st.write("""
+            1. Select the user type from the dropdown menu.
+            2. Choose the date for which you want to predict web traffic.
+            3. Click on 'Predict' to view the results.
+        """)
+
     # Custom button color
     st.markdown("""
         <style>
@@ -37,7 +45,8 @@ def main():
 
     # Predict button at the bottom
     if st.button('Predict'):
-        prediction = predict_web_traffic(user_type, selected_date)
+        with st.spinner('Calculating...'):
+            prediction = predict_web_traffic(user_type, selected_date)
 
         # Displaying the prediction
         if user_type == 'New Users':
@@ -55,5 +64,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
