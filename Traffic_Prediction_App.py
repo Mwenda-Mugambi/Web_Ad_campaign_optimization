@@ -8,6 +8,11 @@ def predict_web_traffic(user_type, dates):
     # Replace with your own model logic
     # This function currently returns random data for demonstration purposes
     return np.random.randint(100, 500, size=len(dates))
+# Image banner
+# banner_image_path = 'Design_Assets/Header_image.jpg'  
+# st.image(banner_image_path, use_column_width=True)
+st.markdown("This product analyzes and predicts the dynamics of food commodity prices in Nairobi, Kenya."
+                "Select a month and year that you would like to predict prices for.", unsafe_allow_html=True)
 
 # Main app
 def main():
