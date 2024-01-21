@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import streamlit as st
 
 # Placeholder function for your predictive model
 def predict_web_traffic(user_type, dates):
@@ -42,4 +43,5 @@ def main():
             plt.xticks(rotation=45)
             st.pyplot(plt)
 
-if __name__ 
+if __name__ == "__main__":
+    main()
