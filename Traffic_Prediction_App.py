@@ -4,49 +4,56 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 # Placeholder function for your predictive model
-def predict_web_traffic(user_type, dates):
+def predict_web_traffic(user_type, date):
     # Replace with your own model logic
     # This function currently returns random data for demonstration purposes
-    return np.random.randint(100, 500, size=len(dates))
-# Image banner
-# banner_image_path = 'Design_Assets/Header_image.jpg'  
-# st.image(banner_image_path, use_column_width=True)
-st.markdown("This product analyzes and predicts the dynamics of food commodity prices in Nairobi, Kenya."
-                "Select a month and year that you would like to predict prices for.", unsafe_allow_html=True)
+    return np.random.randint(100, 500)
 
 # Main app
 def main():
     st.title("Web Traffic Prediction")
 
-    # You can replace this with your actual animation
-    st.markdown("## Plane Animation Placeholder")
+    # Display the image
+    image_path = 'Images/Header image.png'
+    st.image(image_path, use_column_width=True)
 
-    user_type = st.radio("Select User Type", ('New Users', 'Total Users'))
+    st.markdown("Our project aims to revolutionize ad placement strategies through advanced Time Series Forecasting for Jambojet to optimize its advertising spaces to maximize revenue.", unsafe_allow_html=True)
 
-    # Date selection
-    start_date = st.date_input("Start Date")
-    end_date = st.date_input("End Date")
+    # Custom button color
+    st.markdown("""
+        <style>
+        div.stButton > button:first-child {
+            background-color: #df006e;
+            color: white;
+        }
+        </style>""", unsafe_allow_html=True)
 
-    if start_date and end_date:
-        dates = pd.date_range(start_date, end_date)
+    # User selection and Date selection on the same line
+    col1, col2 = st.columns(2)
+    with col1:
+        user_type = st.selectbox("Select User Type", ('New Users', 'Total Users'))
+    with col2:
+        selected_date = st.date_input("Select Date")
 
-        if st.button('Predict'):
-            predictions = predict_web_traffic(user_type, dates)
+    # Predict button at the bottom
+    if st.button('Predict'):
+        prediction = predict_web_traffic(user_type, selected_date)
 
-            # Displaying the predictions
-            if user_type == 'New Users':
-                st.write(f"Predicted new users are {sum(predictions)}")
-            else:
-                st.write(f"Predicted total users are {sum(predictions)}")
+        # Displaying the prediction
+        if user_type == 'New Users':
+            st.write(f"Predicted new users are {prediction}")
+        else:
+            st.write(f"Predicted total users are {prediction}")
 
-            # Plotting
-            plt.figure(figsize=(10, 4))
-            plt.plot(dates, predictions, marker='o')
-            plt.title(f'Predicted Web Traffic for {user_type}')
-            plt.xlabel('Date')
-            plt.ylabel('Number of Users')
-            plt.xticks(rotation=45)
-            st.pyplot(plt)
+        # Plotting
+        plt.figure(figsize=(10, 4))
+        plt.plot([selected_date], [prediction], marker='o')
+        plt.title(f'Predicted Web Traffic for {user_type}')
+        plt.xlabel('Date')
+        plt.ylabel('Number of Users')
+        st.pyplot(plt)
 
 if __name__ == "__main__":
     main()
+
+
