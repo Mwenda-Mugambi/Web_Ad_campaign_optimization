@@ -23,14 +23,45 @@ def predict_web_traffic(model, user_type, date):
     forecast = model.predict(future)
 
     # Convert the log-transformed prediction back to the original scale
-    # Assuming your 'yhat' is the predicted log-transformed value
+    # Assuming 'yhat' is the predicted log-transformed value
     prediction = np.exp(forecast['yhat'].iloc[0])
 
     return prediction
 
-# Main app function remains largely the same
+
+# Main app
 def main():
-    # ... existing code ...
+    st.title("Web Traffic Prediction")
+
+    # Display the image
+    image_path = 'Images/Header image.png'
+    st.image(image_path, use_column_width=True)
+
+    st.markdown("Our project aims to revolutionize ad placement strategies through advanced Time Series Forecasting for Jambojet to optimize its advertising spaces to maximize revenue.", unsafe_allow_html=True)
+
+    # Collapsible Instructions
+    with st.expander("How to use this app"):
+        st.write("""
+            1. Select the user type from the dropdown menu.
+            2. Choose the date for which you want to predict web traffic.
+            3. Click on 'Predict' to view the results.
+        """)
+
+    # Custom button color
+    st.markdown("""
+        <style>
+        div.stButton > button:first-child {
+            background-color: #df006e;
+            color: white;
+        }
+        </style>""", unsafe_allow_html=True)
+
+    # User selection and Date selection on the same line
+    col1, col2 = st.columns(2)
+    with col1:
+        user_type = st.selectbox("Select User Type", ('New Users', 'Total Users'))
+    with col2:
+        selected_date = st.date_input("Select Date")
 
     # Predict button at the bottom
     if st.button('Predict'):
@@ -53,4 +84,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
