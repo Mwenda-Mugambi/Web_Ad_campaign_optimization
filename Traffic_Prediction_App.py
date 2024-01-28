@@ -29,11 +29,14 @@ def main():
     image_path = 'Images/Header image.png'
     st.image(image_path, use_column_width=True)
 
-    st.markdown("Our project aims to revolutionize ad placement strategies ...")
+    st.markdown("Our project aims to revolutionize ad placement strategies through advanced Time Series Forecasting for Jambojet to optimize its advertising spaces to maximize revenue.", unsafe_allow_html=True)
     
+    # Collapsible Instructions
     with st.expander("How to use this app"):
         st.write("""
-            1. Select the user type from the dropdown menu...
+            1. Select the user type from the dropdown menu.
+            2. Choose the date for which you want to predict web traffic.
+            3. Click on 'Predict' to view the results.
         """)
     
         st.markdown("""
@@ -54,8 +57,11 @@ def main():
         with st.spinner('Calculating...'):
             forecast = predict_web_traffic(model, user_type, selected_date)
             selected_prediction = forecast[forecast['ds'] == pd.to_datetime(selected_date)]['yhat_exp'].iloc[0]
-            
-            st.write(f"Predicted {user_type} on {selected_date.strftime('%Y-%m-%d')} are {selected_prediction}")
+
+            # Format the prediction for no decimal places and include commas
+            formatted_prediction = "{:,.0f}".format(selected_prediction)
+        
+            st.write(f"Predicted {user_type} on {selected_date.strftime('%Y-%m-%d')} are {formatted_prediction}")
             
             plt.figure(figsize=(10, 4))
             plt.plot(forecast['ds'], forecast['yhat_exp'], label='Prediction Trend')
