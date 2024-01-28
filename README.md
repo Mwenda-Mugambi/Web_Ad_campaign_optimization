@@ -1,6 +1,8 @@
 # Web Traffic Prediction for Enhanced Ad Revenue
 Jambojet, strives to optimize its advertising spaces to maximize revenue and advertiser satisfaction. The unpredictable nature of web traffic patterns poses a significant challenge and hindered effective ad placement, leading to missed revenue opportunities and decreased advertiser satisfaction. Our project aims to revolutionize ad placement strategies through advanced Time Series Forecasting.
 
+You can test our deployed app using this link https://web-traffic-prediction.streamlit.app/
+
 # Data Collection:
 We will utilize data that simulates the web traffic behaviours of a websites such as www.jambojet.com taking into account their marketing campaigns, travel restrictions and other industry factors that may affect web traffic.
 
